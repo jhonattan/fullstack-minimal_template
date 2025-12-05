@@ -1,38 +1,123 @@
-# Welcome to React Router!
+# FullStack Minimal Template
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A modern, production-ready template for building full-stack React applications using React Router v7 with PostgreSQL database integration.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- 🚀 **React Router v7** - Server-side rendering with file-based routing
+- ⚡️ **Hot Module Replacement** (HMR) for fast development
+- 🗄️ **PostgreSQL Database** - Ready-to-use database setup with migrations
+- 🔐 **Authentication System** - Login/signup with session management
+- 🛒 **E-commerce Ready** - Products, categories, and user management
+- 🎨 **TailwindCSS** - Modern styling with custom components
+- 📦 **TypeScript** - Full type safety throughout the application
+- 🔧 **Database Migrations** - Easy database setup and seeding
+
+## Tech Stack
+
+- **Frontend**: React Router v7, TypeScript, TailwindCSS
+- **Backend**: Node.js with React Router SSR
+- **Database**: PostgreSQL with pg client
+- **Authentication**: bcryptjs for password hashing
+- **Validation**: Zod for schema validation
+- **Development**: Vite, ESLint, tsx for TypeScript execution
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js 18+
+- PostgreSQL database
+- npm or yarn
+
 ### Installation
 
-Install the dependencies:
+1. Clone the repository:
+
+```bash
+git clone <your-repo-url>
+cd fullstack-minimal_template
+```
+
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
+3. Set up your environment variables:
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your database configuration:
+
+```env
+DATABASE_URL=postgresql://username:password@localhost:5432/your_database
+SESSION_SECRET=your-secret-key
+```
+
+### Database Setup
+
+1. Create your PostgreSQL database
+2. Run migrations to create tables:
+
+```bash
+npm run db:migrate
+```
+
+3. Seed the database with sample data:
+
+```bash
+npm run db:seed
+```
+
 ### Development
 
-Start the development server with HMR:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
 Your application will be available at `http://localhost:5173`.
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Create production build
+- `npm run lint` - Run ESLint
+- `npm run typecheck` - Run TypeScript type checking
+- `npm run db:migrate` - Run database migrations
+- `npm run db:seed` - Seed database with sample data
+
+## Project Structure
+
+```
+app/
+├── components/ui/     # Reusable UI components
+├── lib/              # Utility functions and configurations
+├── routes/           # Page components and route handlers
+├── services/         # Database service functions
+├── globals.css       # Global styles
+├── root.tsx          # Root layout component
+└── routes.ts         # Route configuration
+
+scripts/
+├── migrate.js        # Database migration script
+└── seed.js          # Database seeding script
+```
+
+## Database Schema
+
+The template includes the following tables:
+
+- **users** - User authentication and profiles
+- **categories** - Product categories
+- **products** - Product catalog
+- **orders** - User orders
+- **order_items** - Order line items
 
 ## Building for Production
 
@@ -44,44 +129,46 @@ npm run build
 
 ## Deployment
 
+### Environment Variables
+
+Make sure to set these environment variables in production:
+
+- `DATABASE_URL` - PostgreSQL connection string
+- `SESSION_SECRET` - Secret key for session encryption
+
 ### Docker Deployment
 
-To build and run using Docker:
+Build and run using Docker:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+docker build -t fullstack-app .
+docker run -p 3000:3000 fullstack-app
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+### Platform Deployment
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
+This application can be deployed to:
+
+- Vercel
 - Railway
+- Fly.io
+- Heroku
+- AWS
+- Digital Ocean
+- Any Node.js hosting platform
 
-### DIY Deployment
+## Contributing
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
 
-Make sure to deploy the output of `npm run build`
+## License
 
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+MIT License - see the LICENSE file for details.
 
 ---
 
-Built with ❤️ using React Router.
+Built with ❤️ using React Router v7, PostgreSQL, and modern web technologies.
